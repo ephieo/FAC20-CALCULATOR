@@ -2,3 +2,19 @@ body{
     background:#1e1e1e;
     color:#cfffae;
 }
+
+.title{
+    font-family: 'Nova Slim', cursive;
+    font-size:40px;
+}
+
+/* @media all and (max-width: 700px){
+    .title{
+        font-size: 25px;   
+    }
+} */
+@media all and (max-width: 400px){
+    .title{
+        font-size: 18px;   
+    }
+}
