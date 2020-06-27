@@ -22,7 +22,7 @@ this.operation = undefined
     }
     // this function is for everytime you enter a number or operation into the input field.
     appendNumber(number){
-
+this.currentOperand = number 
     }
     // everytime you click a operand button.
     chooseOperation (operation){
@@ -34,7 +34,7 @@ this.operation = undefined
     }
     // to update values inside the input field. 
     updateDisplay (){
-
+this.currentOperandTextElement.innerText = this.currentOperand
     }
     
 }
