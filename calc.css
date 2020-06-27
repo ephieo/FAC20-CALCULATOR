@@ -40,6 +40,29 @@ body{
 .span-two{
     grid-column:span 2;
 }
+.output{
+    grid-column: 1/-1;
+    background:rgba(207, 255, 174, .9);
+    color:#1e1e1e;
+    border-radius:7px;
+    font-size:2.3rem;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    flex-direction:column;
+    padding:10px;
+    word-wrap:break-word;
+    word-break:break-all;
+
+}
+.output .previous-operand{
+     color:rgba(30, 30, 30, 0.7);
+     font-size:1.3rem;
+}
+.output .current-operand{
+    color:rgba(30, 30, 30, 1);
+    
+}
 
 
 /* @media all and (max-width: 700px){
