@@ -24,7 +24,7 @@ body{
 .calculator-grid > button {
     cursor:pointer;
     background:rgba(30, 30, 30, 0.7);
-    border: 2px dashed #cfffae;
+    border: 2px double #cfffae;
     border-radius:7px;
     font-size:2rem;
     color:#cfffae;
