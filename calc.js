@@ -22,7 +22,10 @@ this.operation = undefined
     }
     // this function is for everytime you enter a number or operation into the input field.
     appendNumber(number){
-this.currentOperand = number 
+        /*converting it to a string so that JS doesn't try to calculate it.
+        current operand + the number clicked.*/
+        if(number === '.' && this.currentOperand.includes('.')) return;
+this.currentOperand = this.currentOperand.toString() + number.toString()
     }
     // everytime you click a operand button.
     chooseOperation (operation){
