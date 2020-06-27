@@ -96,4 +96,10 @@ body{
     .span-two{
         grid-column:span 2;
     }
+    .calculator-grid > button:hover {
+        background:#cfffae;
+        border: 2px solid #cfffae;
+        color:#1e1e1e;
+        font-size:1em;
+    }
 }
