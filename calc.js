@@ -49,7 +49,7 @@ const equalsButton = document.querySelector('[data-equals]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
-// console.log(currentOperandTextElement);
+// console.log(operationButtons);
 
 // in order to call the numbers and operands we need to first create a calcultor from the class expression. this is how you define classes.
 
@@ -66,6 +66,6 @@ operationButtons.forEach (button => {
     button.addEventListener ('click', () => {
 calculator.chooseOperation(button.innerText)
 calculator.updateDisplay()
-
+console.log(operationButtons);
     })
 })
