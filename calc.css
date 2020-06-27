@@ -1,4 +1,10 @@
+*, * ::before, *::after{
+    box-sizing:border-box;
+    font-family: 'Nova Slim', cursive;
+    font-weight:bolder;
+    }
 body{
+    padding:0;
     background:#1e1e1e;
     color:#cfffae;
 }
@@ -7,6 +13,15 @@ body{
     font-family: 'Nova Slim', cursive;
     font-size:40px;
 }
+.calculator-grid{
+    display:grid;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    grid-template-columns:repeat (4, 100px);
+    grid-template-rows:repeat (5, 100px);
+}
+
 
 /* @media all and (max-width: 700px){
     .title{
