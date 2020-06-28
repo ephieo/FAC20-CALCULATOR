@@ -14,8 +14,9 @@ this.operation = undefined
     }
    // function to delete  
     delete (){
-
-    }
+this.currentOperand = this.currentOperand.split('').slice(this.currentOperand.length-2).toString();
+//    console.log(this.currentOperand);
+}
     // function for equals sign 
     equals (){
 
@@ -112,4 +113,10 @@ equalsButton.addEventListener('click', () =>{
 allClearButton.addEventListener('click', () => {
     calculator.clear()
     calculator.updateDisplay()
+})
+
+deleteButton.addEventListener('click', ()=>{
+
+calculator.delete()
+calculator.updateDisplay()
 })
