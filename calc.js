@@ -29,15 +29,48 @@ this.currentOperand = this.currentOperand.toString() + number.toString()
     }
     // everytime you click a operand button.
     chooseOperation (operation){
+        if (this.currentOperand === '') return
+        if (this.previousOperand !== ''){
+            this.compute()
+        }
+        this.operation = operation 
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ''
 
     }
     //Takes the users impute to calculate the result and return a single value. 
     compute (){
+let computation;
+const prev = parseFloat(this.previousOperand)
+const current = parseFloat(this.currentOperand)
+if(isNaN(prev) || isNaN(current)) return 
+switch (this.operation){
+    case '+' :
+        computation = prev + current
+        break
+        case '-' :
+            computation = prev - current
+            break
+            case '÷' :
+                computation = prev / current
+                break 
+                case '*' :
+                    computation = prev * current
+                    break 
+                    default :
+                    return
+                   //return because if none of these equations work it should be invalid.  
 
+}
+// because result should be shown in output box so previous box should be empty.
+this.currentOperand = computation
+this.operation = undefined 
+this.previousOperand = ''
     }
     // to update values inside the input field. 
     updateDisplay (){
 this.currentOperandTextElement.innerText = this.currentOperand
+this.previousOperandTextElement.innerText = this.previousOperand
     }
     
 }
@@ -68,4 +101,10 @@ calculator.chooseOperation(button.innerText)
 calculator.updateDisplay()
 console.log(operationButtons);
     })
+})
+//so that when you click equals it computes the equatuon and updates the output/input boxes.
+equalsButton.addEventListener('click', () =>{
+
+    calculator.compute()
+    calculator.updateDisplay()
 })
