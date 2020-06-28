@@ -58,6 +58,9 @@ switch (this.operation){
         case '-' :
             computation = prev - current
             break
+            case '+/-' :
+                computation = current * -1
+                break
             case '÷' :
                 computation = prev / current
                 break 
@@ -116,6 +119,8 @@ const equalsButton = document.querySelector('[data-equals]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
+const minusPlus = document.querySelector('[data-minus-plus]');
+console.log(minusPlus);
 // console.log(operationButtons);
 
 // in order to call the numbers and operands we need to first create a calcultor from the class expression. this is how you define classes.
@@ -153,6 +158,11 @@ deleteButton.addEventListener('click', ()=>{
 calculator.delete()
 calculator.updateDisplay()
 })
+minusPlus.addEventListener('click', button =>{
+
+    calculator.chooseOperation(button.innerText)
+    
+    })
 
 
 // const keyBoard  = (e) => {
