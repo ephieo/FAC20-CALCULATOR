@@ -78,11 +78,21 @@ this.previousOperand = ''
     getDisplayNumber(number){
         const stringNum = String(number);
         //numbers before the decimal 
-        const inetgerDigits = parseFloat(stringNum.split('')[0])
+        const integerDigits = parseFloat(stringNum.split('.')[0])
         // numbers after the decimal 
-        const DecimalDigits = parseFloat(stringNum.split('')[1])
-        console.log(intergerDigits);
-        console.log(decimalDigits);
+        const decimalDigits = stringNum.split('.')[1]
+        // console.log(integerDigits);
+        // console.log(decimalDigits);
+        let integerDisplay;
+        if(isNaN(integerDigits)){integerDisplay = ''}
+        else {
+integerDisplay = integerDigits.toLocaleString('en',{maximumFractionDigits:0})
+        }
+        if(decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`
+        }else {
+            return integerDisplay
+        }
         // const floatNum = parseFloat(number);
         // if (isNaN(floatNum)) return '';
         // return floatNum.toLocaleString('en')
@@ -91,7 +101,9 @@ this.previousOperand = ''
     updateDisplay (){
 this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
 if (this.operation != null){
-this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation} ${this.getDisplayNumber(this.currentOperand)}`
+}else {
+    this.previousOperandTextElement.innerText = ''
 }
     }
     
@@ -141,3 +153,13 @@ deleteButton.addEventListener('click', ()=>{
 calculator.delete()
 calculator.updateDisplay()
 })
+
+
+// const keyBoard  = (e) => {
+//     if(e.keyCode == '37'){
+//         moveToNext();
+//     }
+//     else if (e.keyCode == '39'){
+//         moveToPrev();
+//     }
+// }
