@@ -103,7 +103,7 @@ this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOpe
 if (this.operation != null){
 this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation} ${this.getDisplayNumber(this.currentOperand)}`
 }else {
-    this.previousOperandTextElement.innerText = ''
+    this.previousOperandTextElement.innerText = '0'
 }
     }
     
@@ -156,10 +156,8 @@ calculator.updateDisplay()
 
 
 // const keyBoard  = (e) => {
-//     if(e.keyCode == '37'){
-//         moveToNext();
+//     if(e.keyCode == '49'){
+//        operationsButtons();
 //     }
-//     else if (e.keyCode == '39'){
-//         moveToPrev();
-//     }
+  
 // }
