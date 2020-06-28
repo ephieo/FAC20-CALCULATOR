@@ -81,6 +81,8 @@ this.previousOperand = ''
         const inetgerDigits = parseFloat(stringNum.split('')[0])
         // numbers after the decimal 
         const DecimalDigits = parseFloat(stringNum.split('')[1])
+        console.log(intergerDigits);
+        console.log(decimalDigits);
         // const floatNum = parseFloat(number);
         // if (isNaN(floatNum)) return '';
         // return floatNum.toLocaleString('en')
