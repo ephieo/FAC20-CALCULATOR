@@ -14,7 +14,13 @@ this.operation = undefined
     }
    // function to delete  
     delete (){
-this.currentOperand = this.currentOperand.split('').slice(this.currentOperand.length-2).toString();
+// let arr = this.currentOperand.split('');
+// let arr2 = arr.slice(0,arr.length-1);
+// console.log(arr2);
+
+this.currentOperand = String(this.currentOperand).slice(0,-1);
+
+
 //    console.log(this.currentOperand);
 }
     // function for equals sign 
@@ -68,10 +74,23 @@ this.currentOperand = computation
 this.operation = undefined 
 this.previousOperand = ''
     }
+    //helper function will return that number but as a display value.
+    getDisplayNumber(number){
+        const stringNum = String(number);
+        //numbers before the decimal 
+        const inetgerDigits = parseFloat(stringNum.split('')[0])
+        // numbers after the decimal 
+        const DecimalDigits = parseFloat(stringNum.split('')[1])
+        // const floatNum = parseFloat(number);
+        // if (isNaN(floatNum)) return '';
+        // return floatNum.toLocaleString('en')
+    }
     // to update values inside the input field. 
     updateDisplay (){
-this.currentOperandTextElement.innerText = this.currentOperand
-this.previousOperandTextElement.innerText = this.previousOperand
+this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
+if (this.operation != null){
+this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+}
     }
     
 }
