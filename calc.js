@@ -58,9 +58,9 @@ switch (this.operation){
         case '-' :
             computation = prev - current
             break
-            case '+/-' :
-                computation = current * -1
-                break
+            // case 'current +/-' :
+            //     computation = prev - Math.sign(-current)
+            //     break
             case '÷' :
                 computation = prev / current
                 break 
