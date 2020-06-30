@@ -11,6 +11,7 @@ this.currentOperand = ''
 this.previousOperand = ''
 //undefined because if they clear the calculator then no operation is selected.
 this.operation = undefined
+this.readyToReset = false;
     }
    // function to delete  
     delete (){
@@ -24,9 +25,9 @@ this.currentOperand = String(this.currentOperand).slice(0,-1);
 //    console.log(this.currentOperand);
 }
     // function for equals sign 
-    equals (){
+    // equals (){
 
-    }
+    // }
     // this function is for everytime you enter a number or operation into the input field.
     appendNumber(number){
         /*converting it to a string so that JS doesn't try to calculate it.
@@ -43,6 +44,7 @@ this.currentOperand = this.currentOperand.toString() + number.toString()
         this.operation = operation 
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
+       
 
     }
     //Takes the users impute to calculate the result and return a single value. 
@@ -58,9 +60,9 @@ switch (this.operation){
         case '-' :
             computation = prev - current
             break
-            // case 'current +/-' :
-            //     computation = prev - Math.sign(-current)
-            //     break
+            case '+/-' :
+                computation = prev + (current * -1)
+                break
             case '÷' :
                 computation = prev / current
                 break 
@@ -68,7 +70,9 @@ switch (this.operation){
                     computation = prev * current
                     break 
                     default :
+                    
                     return
+                   
                    //return because if none of these equations work it should be invalid.  
 
 }
@@ -76,14 +80,19 @@ switch (this.operation){
 this.currentOperand = computation
 this.operation = undefined 
 this.previousOperand = ''
+this.readyToReset = true;
     }
+   
     //helper function will return that number but as a display value.
     getDisplayNumber(number){
         const stringNum = String(number);
+        console.log(stringNum);
         //numbers before the decimal 
         const integerDigits = parseFloat(stringNum.split('.')[0])
+        console.log(integerDigits);
         // numbers after the decimal 
         const decimalDigits = stringNum.split('.')[1]
+        console.log(decimalDigits);
         // console.log(integerDigits);
         // console.log(decimalDigits);
         let integerDisplay;
@@ -94,6 +103,7 @@ integerDisplay = integerDigits.toLocaleString('en',{maximumFractionDigits:0})
         if(decimalDigits != null) {
             return `${integerDisplay}.${decimalDigits}`
         }else {
+            console.log(integerDisplay);
             return integerDisplay
         }
         // const floatNum = parseFloat(number);
@@ -105,11 +115,19 @@ integerDisplay = integerDigits.toLocaleString('en',{maximumFractionDigits:0})
 this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
 if (this.operation != null){
 this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation} ${this.getDisplayNumber(this.currentOperand)}`
-}else {
+} else{
     this.previousOperandTextElement.innerText = '0'
 }
     }
-    
+   
+    minusPlus (){
+        if (this.currentOperandTextElement.innerText != '')
+        // this.currentOperandTextElement.innerText = this.currentOperand * -1 
+        //`${-this.currentOperand}`
+        // this.currentOperandTextElement.innerText = `${-this.currentOperand}`
+        this.previousOperandTextElement.innerText = `${-this.currentOperand}`
+     this.currentOperandTextElement.innerText = '' 
+   }
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -129,8 +147,14 @@ const calculator = new Calculator (previousOperandTextElement, currentOperandTex
 // In this event listener I want the text clicked to be enetered into the calc and I want the display updated so i need to call on the appendNumber mehtod and the UpdateDisplay method as well.
 numberButtons.forEach (button => {
     button.addEventListener ('click', () => {
+        if(calculator.previousOperand === '' && calculator.currentOperand !== '' &&
+    calculator.readyToReset) {
+            calculator.currentOperand = '';
+            calculator.readyToReset = false;
+        }
 calculator.appendNumber(button.innerText)
 calculator.updateDisplay()
+
 
     })
 })
@@ -159,10 +183,17 @@ calculator.delete()
 calculator.updateDisplay()
 })
 minusPlus.addEventListener('click', button =>{
-
-    calculator.chooseOperation(button.innerText)
-    
+// let mp = document.querySelector('[data-minus-plus]');
+// m = mp * -1 ;
+// console.log(mp);
+    // calculator.chooseOperation(button.innerText)
+    calculator.minusPlus()
+    calculator.appendNumber('-')
+    // calculator.updateDisplay()
     })
+
+
+
 
 
 // const keyBoard  = (e) => {
